@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Alloysius Goh</title>
-    <link>https://example.com/posts/</link>
+    <link>https://alloygoh.github.io/posts/</link>
     <description>Recent content in Posts on Alloysius Goh</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 19 Jul 2019 23:13:04 +0800</lastBuildDate>
     
-	<atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://alloygoh.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>A Little About Me and My Story</title>
-      <link>https://example.com/posts/about-me/</link>
+      <link>https://alloygoh.github.io/posts/about-me/</link>
       <pubDate>Fri, 19 Jul 2019 23:13:04 +0800</pubDate>
       
-      <guid>https://example.com/posts/about-me/</guid>
+      <guid>https://alloygoh.github.io/posts/about-me/</guid>
       <description>Hi there.
 My name is Alloysius Goh. I am a student in Ngee Ann Polytechnic, Singapore, studying Information Security &amp;amp; Forensics.
 So why have I created this blog like thing? I do not know actually.
