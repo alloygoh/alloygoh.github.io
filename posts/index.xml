@@ -5,21 +5,22 @@
     <link>https://alloygoh.github.io/posts/</link>
     <description>Recent content in Posts on Alloysius Goh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 19 Jul 2019 23:13:04 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2019 14:02:53 +0800</lastBuildDate>
     
 	<atom:link href="https://alloygoh.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>A Little About Me and My Experiences So Far</title>
-      <link>https://alloygoh.github.io/posts/about-me/</link>
-      <pubDate>Fri, 19 Jul 2019 23:13:04 +0800</pubDate>
+      <title>BinExploit 0x1 - ROP Chain</title>
+      <link>https://alloygoh.github.io/posts/bin-exploit-0x1/</link>
+      <pubDate>Fri, 09 Aug 2019 14:02:53 +0800</pubDate>
       
-      <guid>https://alloygoh.github.io/posts/about-me/</guid>
-      <description>Hi there.
-My name is Alloysius Goh. I am a student in Ngee Ann Polytechnic, Singapore, studying Information Security &amp;amp; Forensics.
-So why have I created this blog like thing? I do not know actually.
-Maybe I want to document some of the things I find interesting? Maybe document some experiences from my journey so that I can look back? Or maybe I just want a place to pen my thoughts and rant about stuff.</description>
+      <guid>https://alloygoh.github.io/posts/bin-exploit-0x1/</guid>
+      <description>This post will be the first of many (hopefully) binary exploitation posts.
+I am writing this so I can refer in the future and maybe someone will learn something from it too.
+I will be using the binary from github.
+Part 1 - Functions &amp;amp; Static Analysis Loading the binary into gdb and looking at the functions reveals 4 interesting functions
+ flag vuln win_function1 win_function2  Lets look into the 4 functions and what they do.</description>
     </item>
     
   </channel>
