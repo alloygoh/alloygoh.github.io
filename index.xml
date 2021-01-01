@@ -1,25 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Alloysius Goh</title>
     <link>https://alloygoh.github.io/</link>
     <description>Recent content on Alloysius Goh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 09 Aug 2019 14:02:53 +0800</lastBuildDate>
-    
-	<atom:link href="https://alloygoh.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 09 Aug 2019 14:02:53 +0800</lastBuildDate><atom:link href="https://alloygoh.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>BinExploit 0x1 - ROP Chain</title>
-      <link>https://alloygoh.github.io/posts/bin-exploit-0x1/</link>
+      <link>https://alloygoh.github.io/posts/binexploit-0x1/</link>
       <pubDate>Fri, 09 Aug 2019 14:02:53 +0800</pubDate>
       
-      <guid>https://alloygoh.github.io/posts/bin-exploit-0x1/</guid>
+      <guid>https://alloygoh.github.io/posts/binexploit-0x1/</guid>
       <description>This post will be the first of many (hopefully) binary exploitation posts.
 I am writing this so I can refer in the future and maybe someone will learn something from it too.
 I will be using the binary from github.
-Part 1 - Functions &amp;amp; Static Analysis Loading the binary into gdb and looking at the functions reveals 4 interesting functions
+ Part 1 - Functions &amp;amp; Static Analysis Loading the binary into gdb and looking at the functions reveals 4 interesting functions
  flag vuln win_function1 win_function2  Lets look into the 4 functions and what they do.</description>
     </item>
     
