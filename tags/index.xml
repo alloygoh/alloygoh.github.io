@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Alloysius Goh</title>
     <link>https://alloygoh.github.io/tags/</link>
     <description>Recent content in Tags on Alloysius Goh</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="https://alloygoh.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Fri, 09 Aug 2019 14:02:53 +0800</lastBuildDate><atom:link href="https://alloygoh.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BinExploit</title>
+      <link>https://alloygoh.github.io/tags/binexploit/</link>
+      <pubDate>Fri, 09 Aug 2019 14:02:53 +0800</pubDate>
+      
+      <guid>https://alloygoh.github.io/tags/binexploit/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
