@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>DFIR Playbook // Alloysius Goh</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.87.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Alloysius Goh" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://alloygoh.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DFIR Playbook"/>
+<meta name="twitter:description" content="IR Lifecycle Each phase of the lifecycle must be complete before the next phase can begin.
+Incomplete identification can lead to incomplete containment, and incomplete investigation can cause backdoors to be left in network even after eradication.
+Following this lifecycle helps to provide a structure of how to conduct Incident Response.
+Host Artifacts Powershell Logs Logging is not enabled by default
+Enable logging at Administrative Templates → Windows Components → Windows PowerShell"/>
+
+    <meta property="og:title" content="DFIR Playbook" />
+<meta property="og:description" content="IR Lifecycle Each phase of the lifecycle must be complete before the next phase can begin.
+Incomplete identification can lead to incomplete containment, and incomplete investigation can cause backdoors to be left in network even after eradication.
+Following this lifecycle helps to provide a structure of how to conduct Incident Response.
+Host Artifacts Powershell Logs Logging is not enabled by default
+Enable logging at Administrative Templates → Windows Components → Windows PowerShell" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alloygoh.github.io/posts/dfir-playbook/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-25T14:25:27+08:00" />
+<meta property="article:modified_time" content="2021-08-25T14:25:27+08:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://alloygoh.github.io"><img class="app-header-avatar" src="/avatar.jpeg" alt="Alloysius Goh" /></a>
+      <h1>Alloysius Goh</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+      </nav>
+      <p>Student | RE | Researcher(?)</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/alloygoh" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/alloygoh" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">DFIR Playbook</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Aug 25, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://alloygoh.github.io/tags/incident-response/">Incident-Response</a>
+              <a class="tag" href="https://alloygoh.github.io/tags/forensics/">Forensics</a>
+              <a class="tag" href="https://alloygoh.github.io/tags/playbooks/">Playbooks</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="ir-lifecycle">IR Lifecycle</h1>
+<p><img src="/images/dfir-playbook/ir-lifecycle.png" alt="IR Lifecycle"></p>
+<p>Each phase of the lifecycle must be complete before the next phase can begin.<br>
+Incomplete identification can lead to incomplete containment, and incomplete investigation can cause backdoors to be left in network even after eradication.</p>
+<p>Following this lifecycle helps to provide a structure of how to conduct Incident Response.</p>
+<h1 id="host-artifacts">Host Artifacts</h1>
+<h2 id="powershell-logs">Powershell Logs</h2>
+<p><strong>Logging is not enabled by default</strong></p>
+<p>Enable logging at <code>Administrative Templates → Windows Components → Windows PowerShell</code></p>
+<p><img src="/images/dfir-playbook/ps-gpo.png" alt="Powershell GPO"></p>
+<p>Alternatively, set registry keys:</p>
+<pre><code>- Records all Powershell Sessions' input and output, similar to `bash_history`
+</code></pre>
+<p><code>HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription</code></p>
+<p>→ EnableTranscripting = 1</p>
+<p>→ EnableInvocationHeader = 1</p>
+<p>→ OutputDirectory = &quot;&quot; (empty for default path)</p>
+<pre><code>- Logs code as they are executed by the PowerShell engine
+</code></pre>
+<p><code>HKLM:\Software\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging</code></p>
+<p>→ EnableScriptBlockLogging = 1</p>
+<p>→ EnableScriptBlockInvocationLogging = 1</p>
+<p>Logs at following locations:</p>
+<p><code>C:\Users\**\AppData\Local\Microsoft\CLR_v4.0\UsageLogs\powershell.exe.log</code> -&gt; .NET runtime libraries loaded during last sessions</p>
+<p><code>C:\Users\**\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt</code> -&gt; history of commands (records only interactive PowerShell sessions)</p>
+<p><code>C:\Windows\System32\winevt\Logs\Micorsoft-Windows-Powershell%4Operational.evtx</code> -&gt; errors &amp; interrupts</p>
+<h2 id="windows-event-logs">Windows Event Logs</h2>
+<table>
+<thead>
+<tr>
+<th>Event ID</th>
+<th>Description</th>
+<th>Red Flags</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4624</td>
+<td>A user successfully logged on to a computer</td>
+<td>Logon Type != 5 (Service Startup)</td>
+</tr>
+<tr>
+<td>4625</td>
+<td>Logon failure. A logon attempt was made with an unknown user name or a known user name with a bad password.</td>
+<td></td>
+</tr>
+<tr>
+<td>4634</td>
+<td>The logoff process was completed for a user.</td>
+<td></td>
+</tr>
+<tr>
+<td>4647</td>
+<td>A user initiated the logoff process.</td>
+<td></td>
+</tr>
+<tr>
+<td>4648</td>
+<td>A user successfully logged on to a computer using explicit credentials while already logged on as a different user.</td>
+<td>Event itself might suggest pivoting</td>
+</tr>
+<tr>
+<td>4779</td>
+<td>A user disconnected a terminal server session without logging off.</td>
+<td></td>
+</tr>
+<tr>
+<td>5140</td>
+<td>A network share object was accessed.  (Windows logs this event the first time you access a given network share during a given logon session)</td>
+<td>Might indicate information gathering</td>
+</tr>
+<tr>
+<td>5142</td>
+<td>A network share object was added.</td>
+<td></td>
+</tr>
+<tr>
+<td>5143</td>
+<td>A network share object was modified.</td>
+<td></td>
+</tr>
+<tr>
+<td>5144</td>
+<td>A network share object was deleted.</td>
+<td></td>
+</tr>
+<tr>
+<td>5145</td>
+<td>A network share object was checked to see whether clients can be granted desired access.</td>
+<td>Might indicate information gathering</td>
+</tr>
+</tbody>
+</table>
+<h2 id="other-host-artifacts">Other Host Artifacts</h2>
+<h3 id="prefetch">Prefetch</h3>
+<p>Can be used a source of evidence to indicate executable files that previously ran on the system.<br>
+Parsing the contents of these files can yield:</p>
+<ul>
+<li>Date and time of first execution (corresponding to the prefetch file creation date)</li>
+<li>Last run time (stored within the prefetch file)</li>
+<li>No. of times executed (stored within the prefetch file)</li>
+<li>List of files accessed during the first ten seconds of execution (stored within the
+prefetch file)</li>
+<li>Full path to executable file (derived from accessed file list)</li>
+</ul>
+<p>Prefetch files can be found @ <code>C:\Windows\Prefetch\</code></p>
+<h3 id="application-compatibility-cache-aka-shimcache">Application Compatibility Cache aka ShimCache</h3>
+<p>ShimCache can be used by investigators to determine the application and programs executed on a compromised system.</p>
+<p>The cache contains the following important information:</p>
+<ul>
+<li>File Path</li>
+<li>Standard_Information Last Modified Time</li>
+<li>ShimCache Last Updated Time</li>
+<li>Process Execution Flag</li>
+</ul>
+<p>Not all entries in the ShimCache are resultant of program execution. This is where the process execution flag becomes crucial.</p>
+<p>The ShimCache works on a rolling basis, new entries would eventually overwrite old entries. As such, try to secure this artifact as soon as possible.</p>
+<p><a href="https://github.com/mandiant/ShimCacheParser">ShimCacheParser.py</a> by Mandiant can be used to analyse the ShimCache</p>
+<h3 id="amcache">Amcache</h3>
+<p>The Amcache is a registry hive file which stores information related to program execution</p>
+<p>Only the <code>File</code> Subkey of the <code>Root</code> key is of importance.<br>
+The subkeys under the <code>File</code> key are grouped according to the volume GUID. Under each of those volume GUIDs are File Reference keys, each representing a different file.<br>
+On NTFS systems, the entries follow the format: &lt;NTFS File id&gt;&lt;sequence number&gt;. On FAT systems, the entry represents the offset from the start of the volume where the file directory entry exists.</p>
+<p>The following illustration of the Value Names(subkey of each entry) was taken from swiftforensics&rsquo;s site:
+<img src="/images/dfir-playbook/amcache-table.png" alt="Value Mapping"></p>
+<p>The hive file can be found @ <code>%SystemRoot%\AppCompat\Programs\Amcache.hve</code></p>
+<h3 id="windows-activity-timeline">Windows Activity Timeline</h3>
+<p>The Windows Activity Timeline contains the following information:</p>
+<ul>
+<li>Application name</li>
+<li>Time of launch</li>
+<li>Usage duration</li>
+<li>Files accessed using application</li>
+<li>Copy &amp; paste history</li>
+<li>URLs visited by application</li>
+</ul>
+<p>According to a blog post by Cellebrite, the data is generally kept for 30 days.</p>
+<p>The applications executed by the user can be found in the <code>App Id</code> column of the <code>Activity</code> table.</p>
+<p>The information is stored in a database @ <code>C:\Users\&lt;user&gt;\AppData\ConnectedDevicesPlatform\&lt;folder&gt;\ActivitiesCache.db</code></p>
+<h3 id="master-file-table-mft">Master File Table (MFT)</h3>
+<p>$MFT can give insights into files that were dropped and used by adversaries, that were later removed from the system.</p>
+<p>The MFT contains information of when files were:</p>
+<ul>
+<li>Accessed</li>
+<li>Modified</li>
+<li>Changed</li>
+<li>Created</li>
+</ul>
+<p>The MFT can be parsed using <a href="https://github.com/jschicht/Mft2Csv/wiki/Mft2Csv">Mft2Csv</a></p>
+<p>The csv file can then be used to look for artifacts and evidence during the suspected timeframe.</p>
+<h1 id="memory-forensics">Memory Forensics</h1>
+<p>Acquiring memory snapshot would likely result in addition and changes to host artifacts. Recommended to do as last resort.</p>
+<p>Pros:</p>
+<ul>
+<li>Everything that happens on a computer happens in memory
+<ul>
+<li>Every command entered</li>
+<li>Every file opened</li>
+</ul>
+</li>
+<li>Crucial if no other logging is in place</li>
+<li>Can be used to propel investigation during host forensics</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Heavy</li>
+<li>Takes up significant time</li>
+<li>Addition and modification of artifacts on host</li>
+</ul>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://www.fireeye.com/blog/threat-research/2015/06/caching_out_the_val.html">https://www.fireeye.com/blog/threat-research/2015/06/caching_out_the_val.html</a></li>
+<li><a href="http://www.swiftforensics.com/2013/12/amcachehve-in-windows-8-goldmine-for.html">http://www.swiftforensics.com/2013/12/amcachehve-in-windows-8-goldmine-for.html</a></li>
+<li><a href="https://www.cellebrite.com/en/exploring-the-windows-activity-timeline-part-1-the-high-points/">https://www.cellebrite.com/en/exploring-the-windows-activity-timeline-part-1-the-high-points/</a></li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

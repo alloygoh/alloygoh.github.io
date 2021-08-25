@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Playbooks on Alloysius Goh</title>
+    <link>https://alloygoh.github.io/tags/playbooks/</link>
+    <description>Recent content in Playbooks on Alloysius Goh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 25 Aug 2021 14:25:27 +0800</lastBuildDate><atom:link href="https://alloygoh.github.io/tags/playbooks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DFIR Playbook</title>
+      <link>https://alloygoh.github.io/posts/dfir-playbook/</link>
+      <pubDate>Wed, 25 Aug 2021 14:25:27 +0800</pubDate>
+      
+      <guid>https://alloygoh.github.io/posts/dfir-playbook/</guid>
+      <description>IR Lifecycle Each phase of the lifecycle must be complete before the next phase can begin.
+Incomplete identification can lead to incomplete containment, and incomplete investigation can cause backdoors to be left in network even after eradication.
+Following this lifecycle helps to provide a structure of how to conduct Incident Response.
+Host Artifacts Powershell Logs Logging is not enabled by default
+Enable logging at Administrative Templates → Windows Components → Windows PowerShell</description>
+    </item>
+    
+  </channel>
+</rss>
